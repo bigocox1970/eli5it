@@ -53,12 +53,12 @@ const Hero = () => {
           </Badge>
           
           <h1 className="text-5xl md:text-7xl lg:text-8xl font-extrabold text-gray-900 mb-6 leading-tight">
-            Learn{" "}
+            The AI Study App
+            <br />
+            that explains{" "}
             <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
               Anything
             </span>
-            <br />
-            At Your Level
           </h1>
           
           <div className="mb-12 mt-10">
@@ -68,9 +68,8 @@ const Hero = () => {
           </div>
 
           <p className="text-lg md:text-xl text-gray-600 mb-8 max-w-3xl mx-auto leading-relaxed">
-            Upload documents, create flashcards, generate mock exams, and get explanations from 
-            <span className="font-semibold text-blue-600"> "Explain Like I'm 5" </span>
-            to university-level complexity.
+            Your personal AI study aid. Upload documents, get ELI5 explanations, and automatically
+            generate flashcards and mock exams to help you learn faster.
           </p>
 
           {/* Email Collection Form */}
