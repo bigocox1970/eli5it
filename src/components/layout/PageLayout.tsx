@@ -1,12 +1,14 @@
-import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import Header from "@/components/Header";
+import ScrollToHashElement from "@/components/ScrollToHashElement";
 import { Outlet } from "react-router-dom";
 
 const PageLayout = () => {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50">
+    <div id="top" className="min-h-screen flex flex-col">
+      <ScrollToHashElement />
       <Header />
-      <main>
+      <main className="flex-grow pt-16">
         <Outlet />
       </main>
       <Footer />
