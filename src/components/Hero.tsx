@@ -53,12 +53,7 @@ const Hero = () => {
           </Badge>
           
           <h1 className="text-5xl md:text-7xl lg:text-8xl font-extrabold text-gray-900 mb-6 leading-tight">
-            The AI Study App
-            <br />
-            that explains{" "}
-            <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-              Anything
-            </span>
+            The No1 AI Study app
           </h1>
           
           <div className="mb-12 mt-10">
@@ -76,13 +71,13 @@ const Hero = () => {
                   placeholder="Enter your email for early access"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  className="flex-1 py-6 px-4 text-lg"
+                  className="flex-1 py-4 px-4 text-lg"
                   required
                   disabled={isLoading}
                 />
                 <Button 
                   type="submit" 
-                  className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 px-8 text-lg font-semibold animate-pulse"
+                  className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 px-8 py-4 text-lg font-semibold animate-pulse"
                   disabled={isLoading}
                 >
                   {isLoading ? (
