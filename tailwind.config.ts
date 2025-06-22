@@ -21,6 +21,7 @@ export default {
 			fontFamily: {
 				sans: ['Inter', 'system-ui', 'sans-serif'],
 				dirt: ["\"Rubik Dirt\"", "system-ui"],
+				bungee: ["Bungee", "system-ui"],
 			},
 			colors: {
 				border: 'hsl(var(--border))',
