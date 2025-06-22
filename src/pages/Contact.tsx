@@ -1,6 +1,4 @@
 import { useState } from 'react';
-import Footer from "@/components/Footer";
-import { GraduationCap } from "lucide-react";
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
@@ -50,22 +48,7 @@ const ContactPage = () => {
   };
 
   return (
-    <div className="bg-gray-50">
-      <nav className="bg-white/80 backdrop-blur-lg border-b border-white/20 sticky top-0 z-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center h-16">
-            <a href="/" className="flex items-center space-x-2">
-              <div className="bg-gradient-to-r from-blue-600 to-purple-600 p-2 rounded-lg">
-                <GraduationCap className="h-6 w-6 text-white" />
-              </div>
-              <span className="text-xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-                eli5it.app
-              </span>
-            </a>
-          </div>
-        </div>
-      </nav>
-      <div className="max-w-4xl mx-auto px-4 py-16 sm:px-6 lg:px-8">
+    <div className="max-w-4xl mx-auto px-4 py-16 sm:px-6 lg:px-8 pt-32">
         <div className="text-center">
             <h1 className="text-4xl font-bold text-gray-900 mb-4">Contact Us</h1>
             <p className="text-xl text-gray-600">Have a question or feedback? We'd love to hear from you.</p>
@@ -96,8 +79,6 @@ const ContactPage = () => {
             </form>
         </div>
       </div>
-      <Footer />
-    </div>
   );
 };
 
