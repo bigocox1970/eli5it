@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=1200, initial-scale=1.0">
+    <title>Social Preview for eli5it.app</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --background: hsl(0 0% 100%);
+            --foreground: hsl(222.2 84% 4.9%);
+            --card: hsl(0 0% 100%);
+            --card-foreground: hsl(222.2 84% 4.9%);
+            --primary-foreground: hsl(210 40% 98%);
+            --secondary: hsl(210 40% 96.1%);
+            --muted-foreground: hsl(215.4 16.3% 46.9%);
+            --border: hsl(214.3 31.8% 91.4%);
+            --radius: 0.5rem;
+        }
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #d1d5db; /* A neutral BG to see the final card */
+            font-family: 'Inter', sans-serif;
+            -webkit-font-smoothing: antialiased;
+        }
+        .preview-canvas {
+            width: 1200px;
+            height: 630px;
+            background: #020817; /* The dark background from the screenshot */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 30px;
+            box-sizing: border-box;
+            padding: 20px;
+        }
+        .branding {
+            display: flex;
+            align-items: center;
+            gap: 25px;
+            flex-shrink: 0;
+        }
+        .branding img {
+            width: 80px;
+            height: 80px;
+            background: #1e293b;
+            border-radius: 18px;
+            padding: 10px;
+            box-sizing: border-box;
+        }
+        .branding h1 {
+            font-size: 80px;
+            font-weight: 800;
+            color: hsl(210 40% 98%);
+            margin: 0;
+            letter-spacing: -2.5px;
+        }
+        .app-mockup {
+            width: 100%;
+            max-width: 950px;
+            background-color: var(--secondary);
+            border-radius: var(--radius);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            border: 1px solid hsl(217.2 32.6% 17.5%);
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+        .app-mockup .header {
+            background: linear-gradient(90deg, #6366f1, #3b82f6);
+            color: var(--primary-foreground);
+            padding: 0.75rem 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-shrink: 0;
+        }
+        .app-mockup .upload-button {
+            background-color: #2563eb;
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            font-weight: 500;
+            font-size: 0.875rem;
+        }
+        .app-mockup .logo-text {
+            font-size: 0.875rem;
+            font-weight: 500;
+        }
+        .app-mockup .card {
+            background-color: var(--card);
+            padding: 1.5rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .app-mockup .card-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--card-foreground);
+            margin: 0 0 0.75rem 0;
+        }
+        .app-mockup .card-description {
+            display: flex;
+            align-items: stretch;
+            gap: 0.75rem;
+        }
+        .app-mockup .card-description .line {
+            width: 3px;
+            background: linear-gradient(to bottom, #6366f1, #3b82f6);
+            border-radius: 1.5px;
+        }
+        .app-mockup .card-description p {
+            font-size: 1rem;
+            color: var(--muted-foreground);
+            line-height: 1.6;
+            margin: 0;
+        }
+        .app-mockup .complexity-area {
+            margin-top: 1.25rem;
+        }
+        .app-mockup .complexity-label {
+            font-size: 0.875rem;
+            color: var(--muted-foreground);
+            margin-bottom: 1rem;
+        }
+        .app-mockup .slider-container {
+            position: relative;
+            width: 100%;
+            height: 20px;
+            display: flex;
+            align-items: center;
+        }
+        .app-mockup .slider-track {
+            width: 100%;
+            height: 6px;
+            background-color: #e5e7eb;
+            border-radius: 3px;
+        }
+        .app-mockup .slider-track-progress {
+             width: 20%;
+             height: 100%;
+             background: linear-gradient(90deg, #818cf8, #a5b4fc, #d8b4fe);
+             border-radius: 3px;
+        }
+        .app-mockup .slider-thumb {
+            position: absolute;
+            left: 20%;
+            transform: translateX(-50%);
+            width: 20px;
+            height: 20px;
+            background-color: white;
+            border: 5px solid #6366f1;
+            border-radius: 50%;
+            box-shadow: 0 0 0 1px rgba(0,0,0,0.05), 0 2px 4px -1px rgba(0,0,0,0.1);
+        }
+        .app-mockup .slider-labels {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 0.5rem;
+            font-size: 0.875rem;
+            color: var(--muted-foreground);
+        }
+        .app-mockup .card-footer {
+            display: flex;
+            justify-content: flex-end;
+            margin-top: 1.25rem;
+        }
+        .app-mockup .flashcards-button {
+            background-color: #8b5cf6;
+            color: white;
+            padding: 0.625rem 1.25rem;
+            border-radius: 6px;
+            font-size: 0.875rem;
+            font-weight: 500;
+        }
+    </style>
+</head>
+<body>
+    <div class="preview-canvas">
+        <div class="branding">
+            <img src="/public/favicon.svg" alt="eli5it.app icon">
+            <h1>eli5it.app</h1>
+        </div>
+        <div class="app-mockup">
+            <header class="header">
+                <div class="upload-button">Upload any document!</div>
+                <div class="logo-text">eli5it.app - Making Learning Simple</div>
+            </header>
+            <main class="card">
+                <div>
+                    <h2 class="card-title">Understanding Quantum Physics</h2>
+                    <div class="card-description">
+                        <div class="line"></div>
+                        <p>
+                            <strong>ELI5 Level:</strong> Think of atoms like tiny LEGO blocks. Quantum physics is about how these super-tiny blocks behave in really weird ways - like being in two places at once! 🧱✨
+                        </p>
+                    </div>
+                </div>
+                <div class="complexity-area">
+                    <p class="complexity-label">Complexity Level: ELI5 → University</p>
+                    <div class="slider-container">
+                        <div class="slider-track"><div class="slider-track-progress"></div></div>
+                        <div class="slider-thumb"></div>
+                    </div>
+                    <div class="slider-labels">
+                        <span>ELI5</span>
+                        <span>High School</span>
+                        <span>University</span>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <div class="flashcards-button">Create flashcards!</div>
+                </div>
+            </main>
+        </div>
+    </div>
+</body>
+</html> 

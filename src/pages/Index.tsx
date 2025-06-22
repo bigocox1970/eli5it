@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -9,17 +8,43 @@ import Features from "@/components/Features";
 import HowItWorks from "@/components/HowItWorks";
 import Testimonials from "@/components/Testimonials";
 import Footer from "@/components/Footer";
+import { useToast } from "@/components/ui/use-toast";
 
 const Index = () => {
   const [ctaEmail, setCtaEmail] = useState("");
   const [ctaSubmitted, setCtaSubmitted] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const { toast } = useToast();
 
-  const handleCtaEmailSubmit = (e: React.FormEvent) => {
+  const handleCtaEmailSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (ctaEmail) {
-      console.log("CTA Email submitted:", ctaEmail);
+    if (!ctaEmail) return;
+
+    setIsLoading(true);
+    try {
+      const response = await fetch('/.netlify/functions/join-waitlist', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email: ctaEmail }),
+      });
+
+      if (!response.ok) {
+        throw new Error('Something went wrong. Please try again.');
+      }
+
       setCtaSubmitted(true);
       setCtaEmail("");
+    } catch (error) {
+      console.error(error);
+      toast({
+        title: "Oh no! Something went wrong.",
+        description: "We couldn't add you to the waitlist. Please try again later.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -85,10 +110,22 @@ const Index = () => {
                   onChange={(e) => setCtaEmail(e.target.value)}
                   className="flex-1 bg-white/90 border-white/20"
                   required
+                  disabled={isLoading}
                 />
-                <Button type="submit" size="lg" className="bg-white text-blue-600 hover:bg-gray-100 font-semibold px-6">
-                  <Mail className="w-4 h-4 mr-2" />
-                  Join Now
+                <Button 
+                  type="submit" 
+                  size="lg" 
+                  className="bg-white text-blue-600 hover:bg-gray-100 font-semibold px-6"
+                  disabled={isLoading}
+                >
+                  {isLoading ? (
+                    <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-blue-600"></div>
+                  ) : (
+                    <>
+                      <Mail className="w-4 h-4 mr-2" />
+                      Join Now
+                    </>
+                  )}
                 </Button>
               </div>
             </form>

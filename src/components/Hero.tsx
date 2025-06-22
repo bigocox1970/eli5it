@@ -1,21 +1,45 @@
-
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Input } from "@/components/ui/input";
 import { ArrowRight, Sparkles, Users, Star, Mail } from "lucide-react";
 import { useState } from "react";
+import { useToast } from "@/components/ui/use-toast";
 
 const Hero = () => {
   const [email, setEmail] = useState("");
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const { toast } = useToast();
 
-  const handleEmailSubmit = (e: React.FormEvent) => {
+  const handleEmailSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (email) {
-      // Here you would typically send the email to your backend
-      console.log("Email submitted:", email);
+    if (!email) return;
+
+    setIsLoading(true);
+    try {
+      const response = await fetch('/.netlify/functions/join-waitlist', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email }),
+      });
+
+      if (!response.ok) {
+        throw new Error('Something went wrong. Please try again.');
+      }
+
       setIsSubmitted(true);
       setEmail("");
+    } catch (error) {
+      console.error(error);
+      toast({
+        title: "Oh no! Something went wrong.",
+        description: "We couldn't add you to the waitlist. Please try again later.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -54,10 +78,21 @@ const Hero = () => {
                   onChange={(e) => setEmail(e.target.value)}
                   className="flex-1"
                   required
+                  disabled={isLoading}
                 />
-                <Button type="submit" className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 px-6">
-                  <Mail className="w-4 h-4 mr-2" />
-                  Join Waitlist
+                <Button 
+                  type="submit" 
+                  className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 px-6"
+                  disabled={isLoading}
+                >
+                  {isLoading ? (
+                    <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white"></div>
+                  ) : (
+                    <>
+                      <Mail className="w-4 h-4 mr-2" />
+                      Join Waitlist
+                    </>
+                  )}
                 </Button>
               </form>
             ) : (
