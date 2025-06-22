@@ -40,7 +40,7 @@ const Hero = () => {
           <p className="text-xl md:text-2xl text-gray-600 mb-8 max-w-3xl mx-auto leading-relaxed">
             Upload documents, create flashcards, generate mock exams, and get explanations from 
             <span className="font-semibold text-blue-600"> "Explain Like I'm 5" </span>
-            to university-level complexity. The one tool you can't go through uni without.
+            to university-level complexity.
           </p>
 
           {/* Email Collection Form */}
@@ -67,10 +67,10 @@ const Hero = () => {
             )}
           </div>
 
-          <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
-            <Button size="lg" variant="outline" className="border-2 border-gray-300 hover:border-blue-500 px-8 py-4 text-lg">
-              See How It Works
-            </Button>
+          <div className="mb-12">
+            <p className="text-xl font-semibold text-gray-800">
+              The one tool you can't go through uni without.
+            </p>
           </div>
 
           {/* Social Proof */}
