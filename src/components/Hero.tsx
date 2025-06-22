@@ -47,11 +47,6 @@ const Hero = () => {
     <section className="pt-32 pb-20 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-16">
-          <Badge className="mb-6 bg-gradient-to-r from-orange-100 to-red-100 text-orange-800 border-orange-200">
-            <Sparkles className="w-3 h-3 mr-1" />
-            Limited Beta - Join the Waitlist!
-          </Badge>
-          
           <h1 className="text-5xl md:text-7xl lg:text-8xl font-extrabold text-gray-900 mb-6 leading-tight">
             The No1 AI Study app
           </h1>
@@ -61,68 +56,10 @@ const Hero = () => {
               "The one tool you can't go through uni without."
             </p>
           </div>
-
-          {/* Email Collection Form */}
-          <div className="max-w-lg mx-auto mb-8">
-            {!isSubmitted ? (
-              <form onSubmit={handleEmailSubmit} className="flex flex-col sm:flex-row gap-3">
-                <Input
-                  type="email"
-                  placeholder="Enter your email for early access"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  className="flex-1 py-4 px-4 text-lg"
-                  required
-                  disabled={isLoading}
-                />
-                <Button 
-                  type="submit" 
-                  className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 px-8 py-4 text-lg font-semibold animate-pulse"
-                  disabled={isLoading}
-                >
-                  {isLoading ? (
-                    <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white"></div>
-                  ) : (
-                    <>
-                      <Mail className="w-5 h-5 mr-2" />
-                      Join Waitlist
-                    </>
-                  )}
-                </Button>
-              </form>
-            ) : (
-              <div className="bg-green-50 border border-green-200 rounded-lg p-4">
-                <p className="text-green-800 font-medium">🎉 You're on the list! We'll notify you when we launch.</p>
-              </div>
-            )}
-          </div>
-
-          <p className="text-lg md:text-xl text-gray-600 mb-8 max-w-3xl mx-auto leading-relaxed">
-            Your personal AI study aid. Upload documents, get ELI5 explanations, and automatically
-            generate flashcards and mock exams to help you learn faster.
-          </p>
-
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-8 text-sm text-gray-600 mt-12">
-            <div className="flex items-center gap-2">
-              <Users className="w-4 h-4" />
-              <span>2,500+ students on waitlist</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <div className="flex">
-                {[...Array(5)].map((_, i) => (
-                  <Star key={i} className="w-4 h-4 fill-yellow-400 text-yellow-400" />
-                ))}
-              </div>
-              <span>Early testers love it!</span>
-            </div>
-            <div className="text-center sm:text-left">
-              <span>Coming to 500+ universities</span>
-            </div>
-          </div>
         </div>
 
         {/* Interactive Demo Preview */}
-        <div className="relative max-w-5xl mx-auto">
+        <div className="relative max-w-5xl mx-auto mb-12">
           <div className="bg-white rounded-2xl shadow-2xl border border-gray-200 overflow-hidden">
             <div className="bg-gradient-to-r from-blue-600 to-purple-600 p-4">
               <div className="flex items-center space-x-2">
@@ -169,6 +106,67 @@ const Hero = () => {
           </div>
           <div className="absolute -bottom-4 -right-4 bg-purple-500 text-white p-3 rounded-lg shadow-lg animate-bounce" style={{ animationDelay: '1s' }}>
             <span className="text-sm font-medium">Create flashcards!</span>
+          </div>
+        </div>
+
+        <div className="text-center">
+          {/* Email Collection Form */}
+          <div className="max-w-lg mx-auto mb-8">
+            {!isSubmitted ? (
+              <form onSubmit={handleEmailSubmit} className="flex flex-col sm:flex-row gap-3">
+                <Input
+                  type="email"
+                  placeholder="Enter your email for early access"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  className="flex-1 py-4 px-4 text-lg"
+                  required
+                  disabled={isLoading}
+                />
+                <Button 
+                  type="submit" 
+                  className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 px-8 py-4 text-lg font-semibold animate-pulse"
+                  disabled={isLoading}
+                >
+                  {isLoading ? (
+                    <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white"></div>
+                  ) : (
+                    <>
+                      <Mail className="w-5 h-5 mr-2" />
+                      Join Waitlist
+                    </>
+                  )}
+                </Button>
+              </form>
+            ) : (
+              <div className="bg-green-50 border border-green-200 rounded-lg p-4">
+                <p className="text-green-800 font-medium">🎉 You're on the list! We'll notify you when we launch.</p>
+              </div>
+            )}
+          </div>
+
+          <p className="text-lg md:text-xl text-gray-600 mb-8 max-w-3xl mx-auto leading-relaxed">
+            Your personal AI study aid. Upload documents, get ELI5 explanations, and automatically
+            generate flashcards and mock exams to help you learn faster.
+          </p>
+
+          {/* Social Proof */}
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-8 text-sm text-gray-600 mt-12">
+            <div className="flex items-center gap-2">
+              <Users className="w-4 h-4" />
+              <span>2,500+ students on waitlist</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <div className="flex">
+                {[...Array(5)].map((_, i) => (
+                  <Star key={i} className="w-4 h-4 fill-yellow-400 text-yellow-400" />
+                ))}
+              </div>
+              <span>Early testers love it!</span>
+            </div>
+            <div className="text-center sm:text-left">
+              <span>Coming to 500+ universities</span>
+            </div>
           </div>
         </div>
       </div>

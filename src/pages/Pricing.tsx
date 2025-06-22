@@ -87,7 +87,7 @@ const PricingPage = () => {
           <CardContent className="p-8">
             <div className="text-center mb-6">
               <span className="text-5xl font-bold text-gray-900">Free</span>
-              <span className="text-gray-500"> / forever</span>
+              <span className="text-gray-500"> / Limited</span>
             </div>
             <p className="text-center text-gray-600 mb-8">
               Help us shape the future of learning. All features are free to use during our beta period.
