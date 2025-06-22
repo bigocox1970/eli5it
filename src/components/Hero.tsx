@@ -52,7 +52,7 @@ const Hero = () => {
             Limited Beta - Join the Waitlist!
           </Badge>
           
-          <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-gray-900 mb-6 leading-tight">
+          <h1 className="text-5xl md:text-7xl lg:text-8xl font-extrabold text-gray-900 mb-6 leading-tight">
             Learn{" "}
             <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
               Anything
@@ -61,35 +61,41 @@ const Hero = () => {
             At Your Level
           </h1>
           
-          <p className="text-xl md:text-2xl text-gray-600 mb-8 max-w-3xl mx-auto leading-relaxed">
+          <div className="mb-12 mt-10">
+            <p className="text-2xl md:text-3xl font-bold text-gray-800 tracking-tight">
+              "The one tool you can't go through uni without."
+            </p>
+          </div>
+
+          <p className="text-lg md:text-xl text-gray-600 mb-8 max-w-3xl mx-auto leading-relaxed">
             Upload documents, create flashcards, generate mock exams, and get explanations from 
             <span className="font-semibold text-blue-600"> "Explain Like I'm 5" </span>
             to university-level complexity.
           </p>
 
           {/* Email Collection Form */}
-          <div className="max-w-md mx-auto mb-8">
+          <div className="max-w-lg mx-auto mb-8">
             {!isSubmitted ? (
-              <form onSubmit={handleEmailSubmit} className="flex gap-2">
+              <form onSubmit={handleEmailSubmit} className="flex gap-3">
                 <Input
                   type="email"
                   placeholder="Enter your email for early access"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  className="flex-1"
+                  className="flex-1 py-6 px-4 text-lg"
                   required
                   disabled={isLoading}
                 />
                 <Button 
                   type="submit" 
-                  className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 px-6"
+                  className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 px-8 text-lg font-semibold"
                   disabled={isLoading}
                 >
                   {isLoading ? (
-                    <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white"></div>
+                    <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white"></div>
                   ) : (
                     <>
-                      <Mail className="w-4 h-4 mr-2" />
+                      <Mail className="w-5 h-5 mr-2" />
                       Join Waitlist
                     </>
                   )}
@@ -102,14 +108,7 @@ const Hero = () => {
             )}
           </div>
 
-          <div className="mb-12">
-            <p className="text-xl font-semibold text-gray-800">
-              The one tool you can't go through uni without.
-            </p>
-          </div>
-
-          {/* Social Proof */}
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-8 text-sm text-gray-600">
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-8 text-sm text-gray-600 mt-12">
             <div className="flex items-center gap-2">
               <Users className="w-4 h-4" />
               <span>2,500+ students on waitlist</span>
