@@ -1,7 +1,8 @@
 import { Button } from "@/components/ui/button";
+import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
-import { GraduationCap, Upload, MessageCircle, Zap, Users, BookOpen, Star, ArrowRight, Play, Mail } from "lucide-react";
+import { GraduationCap, Upload, MessageCircle, Zap, Users, BookOpen, Star, ArrowRight, Play, Mail, Menu } from "lucide-react";
 import Hero from "@/components/Hero";
 import Features from "@/components/Features";
 import HowItWorks from "@/components/HowItWorks";
@@ -24,12 +25,33 @@ const Index = () => {
               </span>
             </div>
             
+            {/* Desktop Navigation */}
             <div className="hidden md:flex items-center space-x-8">
               <a href="#features" className="text-gray-600 hover:text-blue-600 transition-colors">Features</a>
               <a href="#how-it-works" className="text-gray-600 hover:text-blue-600 transition-colors">How It Works</a>
               <a href="#testimonials" className="text-gray-600 hover:text-blue-600 transition-colors">Reviews</a>
               <a href="/pricing" className="text-gray-600 hover:text-blue-600 transition-colors">Pricing</a>
               <a href="/contact" className="text-gray-600 hover:text-blue-600 transition-colors">Contact</a>
+            </div>
+
+            {/* Mobile Navigation */}
+            <div className="md:hidden">
+              <Sheet>
+                <SheetTrigger asChild>
+                  <Button variant="outline" size="icon">
+                    <Menu className="h-6 w-6" />
+                  </Button>
+                </SheetTrigger>
+                <SheetContent side="right">
+                  <div className="flex flex-col space-y-6 pt-10">
+                    <a href="#features" className="text-lg text-gray-700 hover:text-blue-600 transition-colors">Features</a>
+                    <a href="#how-it-works" className="text-lg text-gray-700 hover:text-blue-600 transition-colors">How It Works</a>
+                    <a href="#testimonials" className="text-lg text-gray-700 hover:text-blue-600 transition-colors">Reviews</a>
+                    <a href="/pricing" className="text-lg text-gray-700 hover:text-blue-600 transition-colors">Pricing</a>
+                    <a href="/contact" className="text-lg text-gray-700 hover:text-blue-600 transition-colors">Contact</a>
+                  </div>
+                </SheetContent>
+              </Sheet>
             </div>
           </div>
         </div>

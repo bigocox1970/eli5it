@@ -67,11 +67,6 @@ const Hero = () => {
             </p>
           </div>
 
-          <p className="text-lg md:text-xl text-gray-600 mb-8 max-w-3xl mx-auto leading-relaxed">
-            Your personal AI study aid. Upload documents, get ELI5 explanations, and automatically
-            generate flashcards and mock exams to help you learn faster.
-          </p>
-
           {/* Email Collection Form */}
           <div className="max-w-lg mx-auto mb-8">
             {!isSubmitted ? (
@@ -106,6 +101,11 @@ const Hero = () => {
               </div>
             )}
           </div>
+
+          <p className="text-lg md:text-xl text-gray-600 mb-8 max-w-3xl mx-auto leading-relaxed">
+            Your personal AI study aid. Upload documents, get ELI5 explanations, and automatically
+            generate flashcards and mock exams to help you learn faster.
+          </p>
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-8 text-sm text-gray-600 mt-12">
             <div className="flex items-center gap-2">
