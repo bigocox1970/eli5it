@@ -1,4 +1,3 @@
-
 import { Card, CardContent } from "@/components/ui/card";
 import { Star, Quote } from "lucide-react";
 
@@ -94,25 +93,6 @@ const Testimonials = () => {
           ))}
         </div>
 
-        {/* Stats */}
-        <div className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-          <div>
-            <div className="text-3xl md:text-4xl font-bold text-blue-600 mb-2">10k+</div>
-            <div className="text-gray-600">Active Students</div>
-          </div>
-          <div>
-            <div className="text-3xl md:text-4xl font-bold text-purple-600 mb-2">500+</div>
-            <div className="text-gray-600">Universities</div>
-          </div>
-          <div>
-            <div className="text-3xl md:text-4xl font-bold text-green-600 mb-2">1M+</div>
-            <div className="text-gray-600">Questions Answered</div>
-          </div>
-          <div>
-            <div className="text-3xl md:text-4xl font-bold text-orange-600 mb-2">4.9/5</div>
-            <div className="text-gray-600">Average Rating</div>
-          </div>
-        </div>
       </div>
     </section>
   );
