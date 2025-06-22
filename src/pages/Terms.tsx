@@ -41,11 +41,6 @@ const TermsOfService = () => (
           <a href="/privacy" className="text-blue-600 hover:underline"> privacy policy</a> regarding our user data collection.
           It will help you better understand our practices.
         </p>
-        <h2 className="text-2xl font-bold text-gray-800 mt-8 mb-4">Contact Us</h2>
-        <p>
-          If you have questions or comments about these Terms, please contact
-          us at: [Your Contact Information]
-        </p>
       </div>
     </div>
     <Footer />

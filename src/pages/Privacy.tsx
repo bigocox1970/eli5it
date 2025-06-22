@@ -53,11 +53,6 @@ const PrivacyPolicy = () => (
           <li>Improve our website and services.</li>
           <li>Monitor and analyze usage and trends.</li>
         </ul>
-        <h2 className="text-2xl font-bold text-gray-800 mt-8 mb-4">Contact Us</h2>
-        <p>
-          If you have questions or comments about this Privacy Policy, please
-          contact us at: [Your Contact Information]
-        </p>
       </div>
     </div>
     <Footer />
