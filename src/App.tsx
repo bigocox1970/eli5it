@@ -9,6 +9,7 @@ import TermsOfService from "./pages/Terms";
 import ContactPage from './pages/Contact';
 import PricingPage from "./pages/Pricing";
 import PageLayout from "./components/layout/PageLayout";
+import ScrollToHashElement from "./components/ScrollToHashElement";
 
 const queryClient = new QueryClient();
 
@@ -17,6 +18,7 @@ const App = () => (
     <Toaster />
     <Sonner />
     <BrowserRouter>
+      <ScrollToHashElement />
       <Routes>
         <Route element={<PageLayout />}>
           <Route path="/" element={<Index />} />
