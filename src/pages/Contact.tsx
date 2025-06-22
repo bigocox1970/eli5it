@@ -10,19 +10,43 @@ const ContactPage = () => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [message, setMessage] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
   const { toast } = useToast();
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // In a real app, you'd handle form submission here (e.g., send to an API)
-    console.log({ name, email, message });
-    toast({
-      title: "Message Sent!",
-      description: "Thanks for reaching out. We'll get back to you soon.",
-    });
-    setName('');
-    setEmail('');
-    setMessage('');
+    setIsLoading(true);
+
+    try {
+      const response = await fetch('/.netlify/functions/submit-contact-form', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ name, email, message }),
+      });
+
+      if (!response.ok) {
+        throw new Error('Something went wrong. Please try again.');
+      }
+
+      toast({
+        title: "Message Sent!",
+        description: "Thanks for reaching out. We'll get back to you soon.",
+      });
+      setName('');
+      setEmail('');
+      setMessage('');
+    } catch (error) {
+      console.error(error);
+      toast({
+        title: "Oh no! Something went wrong.",
+        description: "We couldn't send your message. Please try again later.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (
@@ -50,18 +74,24 @@ const ContactPage = () => {
             <form onSubmit={handleSubmit} className="space-y-6">
                 <div>
                     <label htmlFor="name" className="block text-sm font-medium text-gray-700">Name</label>
-                    <Input id="name" type="text" value={name} onChange={(e) => setName(e.target.value)} required className="mt-1"/>
+                    <Input id="name" type="text" value={name} onChange={(e) => setName(e.target.value)} required className="mt-1" disabled={isLoading}/>
                 </div>
                  <div>
                     <label htmlFor="email" className="block text-sm font-medium text-gray-700">Email</label>
-                    <Input id="email" type="email" value={email} onChange={(e) => setEmail(e.target.value)} required className="mt-1"/>
+                    <Input id="email" type="email" value={email} onChange={(e) => setEmail(e.target.value)} required className="mt-1" disabled={isLoading}/>
                 </div>
                  <div>
                     <label htmlFor="message" className="block text-sm font-medium text-gray-700">Message</label>
-                    <Textarea id="message" value={message} onChange={(e) => setMessage(e.target.value)} required rows={4} className="mt-1"/>
+                    <Textarea id="message" value={message} onChange={(e) => setMessage(e.target.value)} required rows={4} className="mt-1" disabled={isLoading}/>
                 </div>
                 <div>
-                    <Button type="submit" className="w-full bg-gradient-to-r from-blue-600 to-purple-600">Send Message</Button>
+                    <Button type="submit" className="w-full bg-gradient-to-r from-blue-600 to-purple-600" disabled={isLoading}>
+                      {isLoading ? (
+                        <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white"></div>
+                      ) : (
+                        "Send Message"
+                      )}
+                    </Button>
                 </div>
             </form>
         </div>
