@@ -1,6 +1,6 @@
 
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Upload, MessageCircle, Zap, BookOpen, Target, Brain } from "lucide-react";
+import { Upload, MessageCircle, Zap, BookOpen, Target, Brain, CreditCard, FileText, GraduationCap } from "lucide-react";
 
 const Features = () => {
   const features = [
@@ -23,22 +23,40 @@ const Features = () => {
       color: "from-green-500 to-teal-500"
     },
     {
+      icon: CreditCard,
+      title: "AI Flashcards",
+      description: "Automatically generate flashcards from your documents. Perfect for memorizing key concepts and terms.",
+      color: "from-orange-500 to-red-500"
+    },
+    {
+      icon: FileText,
+      title: "Smart Revision Notes",
+      description: "Create comprehensive revision notes that summarize the most important points from your materials.",
+      color: "from-indigo-500 to-purple-500"
+    },
+    {
+      icon: GraduationCap,
+      title: "Mock Exams",
+      description: "Generate practice exams and quizzes based on your uploaded content to test your knowledge.",
+      color: "from-yellow-500 to-orange-500"
+    },
+    {
       icon: Brain,
       title: "Deep Understanding",
       description: "Our AI doesn't just summarize - it explains concepts, connections, and context.",
-      color: "from-orange-500 to-red-500"
+      color: "from-rose-500 to-pink-500"
     },
     {
       icon: Zap,
       title: "Instant Insights",
       description: "Get explanations in seconds, not hours. Perfect for those late-night study sessions.",
-      color: "from-indigo-500 to-purple-500"
+      color: "from-emerald-500 to-teal-500"
     },
     {
       icon: BookOpen,
       title: "Study Companion",
       description: "Built for students, by students. Designed to be your ultimate academic sidekick.",
-      color: "from-yellow-500 to-orange-500"
+      color: "from-violet-500 to-purple-500"
     }
   ];
 
@@ -47,11 +65,11 @@ const Features = () => {
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-            Why Students Love eli5it.app
+            Everything You Need to Excel
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Everything you need to understand complex topics, explain difficult concepts, 
-            and ace your studies - all in one powerful tool.
+            From document analysis to flashcards, revision notes, and mock exams - 
+            all powered by AI that adapts to your learning level.
           </p>
         </div>
 

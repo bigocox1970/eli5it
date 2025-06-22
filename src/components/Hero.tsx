@@ -1,16 +1,31 @@
 
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { ArrowRight, Sparkles, Users, Star } from "lucide-react";
+import { Input } from "@/components/ui/input";
+import { ArrowRight, Sparkles, Users, Star, Mail } from "lucide-react";
+import { useState } from "react";
 
 const Hero = () => {
+  const [email, setEmail] = useState("");
+  const [isSubmitted, setIsSubmitted] = useState(false);
+
+  const handleEmailSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (email) {
+      // Here you would typically send the email to your backend
+      console.log("Email submitted:", email);
+      setIsSubmitted(true);
+      setEmail("");
+    }
+  };
+
   return (
     <section className="pt-32 pb-20 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-16">
-          <Badge className="mb-6 bg-gradient-to-r from-blue-100 to-purple-100 text-blue-800 border-blue-200">
+          <Badge className="mb-6 bg-gradient-to-r from-orange-100 to-red-100 text-orange-800 border-orange-200">
             <Sparkles className="w-3 h-3 mr-1" />
-            The Ultimate Study Companion
+            Limited Beta - Join the Waitlist!
           </Badge>
           
           <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-gray-900 mb-6 leading-tight">
@@ -23,16 +38,36 @@ const Hero = () => {
           </h1>
           
           <p className="text-xl md:text-2xl text-gray-600 mb-8 max-w-3xl mx-auto leading-relaxed">
-            Upload documents, ask questions, and get explanations from 
+            Upload documents, create flashcards, generate mock exams, and get explanations from 
             <span className="font-semibold text-blue-600"> "Explain Like I'm 5" </span>
             to university-level complexity. The one tool you can't go through uni without.
           </p>
 
+          {/* Email Collection Form */}
+          <div className="max-w-md mx-auto mb-8">
+            {!isSubmitted ? (
+              <form onSubmit={handleEmailSubmit} className="flex gap-2">
+                <Input
+                  type="email"
+                  placeholder="Enter your email for early access"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  className="flex-1"
+                  required
+                />
+                <Button type="submit" className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 px-6">
+                  <Mail className="w-4 h-4 mr-2" />
+                  Join Waitlist
+                </Button>
+              </form>
+            ) : (
+              <div className="bg-green-50 border border-green-200 rounded-lg p-4">
+                <p className="text-green-800 font-medium">🎉 You're on the list! We'll notify you when we launch.</p>
+              </div>
+            )}
+          </div>
+
           <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
-            <Button size="lg" className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-semibold px-8 py-4 text-lg">
-              Start Learning Free
-              <ArrowRight className="ml-2 h-5 w-5" />
-            </Button>
             <Button size="lg" variant="outline" className="border-2 border-gray-300 hover:border-blue-500 px-8 py-4 text-lg">
               See How It Works
             </Button>
@@ -42,7 +77,7 @@ const Hero = () => {
           <div className="flex flex-col sm:flex-row items-center justify-center gap-8 text-sm text-gray-600">
             <div className="flex items-center gap-2">
               <Users className="w-4 h-4" />
-              <span>10,000+ students</span>
+              <span>2,500+ students on waitlist</span>
             </div>
             <div className="flex items-center gap-2">
               <div className="flex">
@@ -50,10 +85,10 @@ const Hero = () => {
                   <Star key={i} className="w-4 h-4 fill-yellow-400 text-yellow-400" />
                 ))}
               </div>
-              <span>4.9/5 rating</span>
+              <span>Early testers love it!</span>
             </div>
             <div className="text-center sm:text-left">
-              <span>Trusted by students at 500+ universities</span>
+              <span>Coming to 500+ universities</span>
             </div>
           </div>
         </div>
@@ -105,7 +140,7 @@ const Hero = () => {
             <span className="text-sm font-medium">Upload any document!</span>
           </div>
           <div className="absolute -bottom-4 -right-4 bg-purple-500 text-white p-3 rounded-lg shadow-lg animate-bounce" style={{ animationDelay: '1s' }}>
-            <span className="text-sm font-medium">Ask anything!</span>
+            <span className="text-sm font-medium">Create flashcards!</span>
           </div>
         </div>
       </div>
