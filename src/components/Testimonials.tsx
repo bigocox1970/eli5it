@@ -4,46 +4,46 @@ import { Star, Quote } from "lucide-react";
 const Testimonials = () => {
   const testimonials = [
     {
-      name: "Sarah Chen",
-      role: "Biology Major, Stanford",
-      content: "This app literally saved my GPA. Complex biochemistry concepts that used to take hours to understand now click in minutes. The ELI5 feature is pure genius!",
+      name: "Sophie Dubois",
+      role: "History Student, Sorbonne University",
+      content: "This app literally saved my degree. Complex historical events that used to take hours to understand now click in minutes. The ELI5 feature is pure genius!",
       rating: 5,
-      avatar: "SC"
+      avatar: "SD"
     },
     {
-      name: "Marcus Johnson",
-      role: "Engineering Student, MIT",
+      name: "Ben Williams",
+      role: "Engineering Student, University of Cambridge",
       content: "I went from struggling with thermodynamics to actually enjoying it. Being able to adjust complexity on the fly is a game-changer for my learning style.",
       rating: 5,
-      avatar: "MJ"
+      avatar: "BW"
     },
     {
-      name: "Emma Rodriguez",
-      role: "Psychology PhD, UCLA",
-      content: "Even as a grad student, I use this daily. It helps me break down complex research papers and explain concepts to undergrads. Absolutely essential.",
+      name: "Chiara Rossi",
+      role: "Art History, University of Bologna",
+      content: "Even as a post-grad, I use this daily. It helps me break down complex art movements and explain concepts to new students. Absolutely essential.",
       rating: 5,
-      avatar: "ER"
+      avatar: "CR"
     },
     {
-      name: "David Kim",
-      role: "Pre-Med, Johns Hopkins",
-      content: "Organic chemistry was my nightmare until eli5it. Now I can actually visualize what's happening at the molecular level. This is the future of learning.",
+      name: "Max Wagner",
+      role: "Medical Student, Heidelberg University",
+      content: "Organic chemistry was my nightmare until eli5it. Now I can actually visualise what's happening at the molecular level. This is the future of learning.",
       rating: 5,
-      avatar: "DK"
+      avatar: "MW"
     },
     {
-      name: "Lisa Wang",
-      role: "Computer Science, Berkeley",
+      name: "Isabelle Müller",
+      role: "Computer Science, ETH Zurich",
       content: "Finally, an AI that explains algorithms in a way that makes sense! From bubble sort to machine learning - it adapts to exactly what I need to know.",
       rating: 5,
-      avatar: "LW"
+      avatar: "IM"
     },
     {
-      name: "Ahmed Hassan",
-      role: "Physics Major, Caltech",
+      name: "Liam O'Connor",
+      role: "Physics Student, Trinity College Dublin",
       content: "Quantum mechanics used to feel impossible. Now I can start with the basics and work up to the math. It's like having the world's best tutor 24/7.",
       rating: 5,
-      avatar: "AH"
+      avatar: "LO"
     }
   ];
 

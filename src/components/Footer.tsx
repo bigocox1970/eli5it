@@ -52,13 +52,25 @@ const Footer = () => {
         </div>
 
         {/* Bottom */}
-        <div className="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center">
-          <p className="text-gray-400 mb-4 md:mb-0">
-            © 2024 eli5it.app. All rights reserved.
-          </p>
-          <p className="text-gray-400 flex items-center">
-            Made with <Heart className="w-4 h-4 text-red-500 mx-1" /> for students worldwide
-          </p>
+        <div className="border-t border-gray-800 pt-8">
+          <div className="flex flex-col md:flex-row justify-between items-center">
+            <p className="text-gray-400 mb-4 md:mb-0">
+              © 2024 eli5it.app. All rights reserved.
+            </p>
+            <p className="text-gray-400 flex items-center">
+              Made with <Heart className="w-4 h-4 text-red-500 mx-1" /> for students worldwide
+            </p>
+          </div>
+          <div className="text-center text-gray-400 mt-8">
+            <a
+              href="https://diamondinternet.co.uk/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-white transition-colors"
+            >
+              App design by Diamond Internet
+            </a>
+          </div>
         </div>
       </div>
     </footer>
