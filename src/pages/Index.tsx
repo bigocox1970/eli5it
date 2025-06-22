@@ -58,12 +58,6 @@ const Index = () => {
             Join our exclusive beta program and get early access to the future of learning
           </p>
           
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-blue-600 px-8 py-3">
-              <Play className="mr-2 h-5 w-5" />
-              Watch Demo
-            </Button>
-          </div>
         </div>
       </section>
 
