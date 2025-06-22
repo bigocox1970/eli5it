@@ -75,7 +75,7 @@ const Hero = () => {
           {/* Email Collection Form */}
           <div className="max-w-lg mx-auto mb-8">
             {!isSubmitted ? (
-              <form onSubmit={handleEmailSubmit} className="flex gap-3">
+              <form onSubmit={handleEmailSubmit} className="flex flex-col sm:flex-row gap-3">
                 <Input
                   type="email"
                   placeholder="Enter your email for early access"
@@ -87,7 +87,7 @@ const Hero = () => {
                 />
                 <Button 
                   type="submit" 
-                  className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 px-8 text-lg font-semibold"
+                  className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 px-8 text-lg font-semibold animate-pulse"
                   disabled={isLoading}
                 >
                   {isLoading ? (
