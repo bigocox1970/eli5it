@@ -23,6 +23,17 @@ const TermsOfService = () => (
         <a href="/privacy" className="text-blue-600 hover:underline"> privacy policy</a> regarding our user data collection.
         It will help you better understand our practices.
       </p>
+
+      <h2 id="credits" className="text-2xl font-bold text-gray-800 mt-8 mb-4">Credit System</h2>
+      <p>
+        Certain features within the eli5it.app, such as document analysis and content generation, consume credits. 
+        Upon subscribing to a paid plan, your account will be allocated 10,000 credits each month. 
+        This is to prevent abuse and ensure fair usage for all users.
+      </p>
+      <p>
+        Should you require more credits, you will have the option to purchase additional credits through your account dashboard. 
+        Unused credits do not roll over to the next month.
+      </p>
     </div>
   </div>
 );

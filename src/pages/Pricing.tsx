@@ -4,12 +4,14 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { useToast } from "@/components/ui/use-toast";
+import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
 
 const PricingPage = () => {
   const [email, setEmail] = useState("");
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const { toast } = useToast();
+  const [billingCycle, setBillingCycle] = useState<"monthly" | "annually">("monthly");
 
   const handleEmailSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -64,7 +66,18 @@ const PricingPage = () => {
         </p>
       </div>
 
-      <div className="mt-16 flex flex-col lg:flex-row justify-center items-center gap-8">
+      <div className="flex justify-center my-10">
+        <ToggleGroup type="single" value={billingCycle} onValueChange={(value: "monthly" | "annually") => value && setBillingCycle(value)}>
+          <ToggleGroupItem value="monthly" aria-label="Toggle monthly">
+            Monthly
+          </ToggleGroupItem>
+          <ToggleGroupItem value="annually" aria-label="Toggle annually">
+            Annually (Save 20%)
+          </ToggleGroupItem>
+        </ToggleGroup>
+      </div>
+
+      <div className="mt-8 flex flex-col lg:flex-row justify-center items-center gap-8">
         {/* Current Beta Plan */}
         <Card className="w-full max-w-md shadow-lg border-2 border-green-500">
           <CardHeader className="text-center bg-green-50 rounded-t-lg p-6">
@@ -107,25 +120,36 @@ const PricingPage = () => {
               </form>
             ) : (
               <div className="bg-green-100 border border-green-200 rounded-lg p-4 text-center">
-                <p className="text-green-800 font-medium">�� You're on the list!</p>
+                <p className="text-green-800 font-medium">🎉 You're on the list!</p>
               </div>
             )}
           </CardContent>
         </Card>
         
         {/* Future Launch Plan */}
-        <Card className="w-full max-w-md shadow-lg opacity-70">
+        <Card className="w-full max-w-md shadow-lg opacity-80">
           <CardHeader className="text-center bg-gray-100 rounded-t-lg p-6">
             <CardTitle className="text-2xl font-bold text-gray-800">Launch Plan</CardTitle>
             <CardDescription className="text-gray-500">Coming Soon</CardDescription>
           </CardHeader>
           <CardContent className="p-8">
             <div className="text-center mb-6">
-              <span className="text-5xl font-bold text-gray-900">£9.99</span>
-              <span className="text-gray-500"> / month</span>
+              {billingCycle === "monthly" ? (
+                <>
+                  <span className="text-5xl font-bold text-gray-900">£9.99</span>
+                  <span className="text-gray-500"> / month</span>
+                </>
+              ) : (
+                <>
+                  <span className="text-5xl font-bold text-gray-900">£7.99</span>
+                  <span className="text-gray-500"> / month</span>
+                </>
+              )}
             </div>
             <p className="text-center text-gray-600 mb-8">
-              Billed annually after a 7-day free trial. Unlock your full potential.
+              {billingCycle === "monthly"
+                ? "Billed monthly. Cancel anytime."
+                : "Billed as £95.99 annually. Cancel anytime."}
             </p>
             <ul className="space-y-3 mb-8">
               {features.map((feature, index) => (
@@ -140,6 +164,13 @@ const PricingPage = () => {
             </Button>
           </CardContent>
         </Card>
+      </div>
+
+      <div className="text-center mt-12">
+        <p className="text-sm text-gray-500">
+          * Some features use a credit system.{" "}
+          <a href="/terms#credits" className="underline hover:text-gray-700">Learn more</a>.
+        </p>
       </div>
     </div>
   );
