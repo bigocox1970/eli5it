@@ -8,8 +8,8 @@ const Header = () => {
     { to: "/#features", label: "Features" },
     { to: "/#how-it-works", label: "How It Works" },
     { to: "/#testimonials", label: "Reviews" },
-    { to: "/pricing", label: "Pricing" },
-    { to: "/contact", label: "Contact" },
+    { to: "/#pricing", label: "Pricing" },
+    { to: "/#contact", label: "Contact" },
   ];
 
   return (

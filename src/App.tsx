@@ -6,8 +6,6 @@ import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 import PrivacyPolicy from "./pages/Privacy";
 import TermsOfService from "./pages/Terms";
-import ContactPage from './pages/Contact';
-import PricingPage from "./pages/Pricing";
 import PageLayout from "./components/layout/PageLayout";
 import ScrollToHashElement from "./components/ScrollToHashElement";
 
@@ -24,8 +22,6 @@ const App = () => (
           <Route path="/" element={<Index />} />
           <Route path="/privacy" element={<PrivacyPolicy />} />
           <Route path="/terms" element={<TermsOfService />} />
-          <Route path="/contact" element={<ContactPage />} />
-          <Route path="/pricing" element={<PricingPage />} />
         </Route>
         {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
         <Route path="*" element={<NotFound />} />

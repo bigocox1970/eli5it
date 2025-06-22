@@ -4,7 +4,7 @@ import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { useToast } from '@/components/ui/use-toast';
 
-const ContactPage = () => {
+const Contact = () => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [message, setMessage] = useState('');
@@ -18,16 +18,12 @@ const ContactPage = () => {
     try {
       const response = await fetch('/.netlify/functions/submit-contact-form', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ name, email, message }),
       });
 
-      if (!response.ok) {
-        throw new Error('Something went wrong. Please try again.');
-      }
-
+      if (!response.ok) throw new Error('Something went wrong. Please try again.');
+      
       toast({
         title: "Message Sent!",
         description: "Thanks for reaching out. We'll get back to you soon.",
@@ -48,29 +44,30 @@ const ContactPage = () => {
   };
 
   return (
-    <div className="max-w-4xl mx-auto px-4 py-16 sm:px-6 lg:px-8 pt-32">
+    <section id="contact" className="py-20 bg-gradient-to-r from-blue-600 to-purple-600 text-white">
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center">
-            <h1 className="text-4xl font-bold text-gray-900 mb-4">Contact Us</h1>
-            <p className="text-xl text-gray-600">Have a question or feedback? We'd love to hear from you.</p>
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">Contact Us</h2>
+            <p className="text-xl text-blue-100">Have a question or feedback? We'd love to hear from you.</p>
         </div>
         <div className="mt-12 max-w-lg mx-auto">
             <form onSubmit={handleSubmit} className="space-y-6">
                 <div>
-                    <label htmlFor="name" className="block text-sm font-medium text-gray-700">Name</label>
-                    <Input id="name" type="text" value={name} onChange={(e) => setName(e.target.value)} required className="mt-1" disabled={isLoading}/>
+                    <label htmlFor="name" className="block text-sm font-medium">Name</label>
+                    <Input id="name" type="text" value={name} onChange={(e) => setName(e.target.value)} required className="mt-1 bg-white/20 border-white/30 placeholder:text-gray-300" disabled={isLoading}/>
                 </div>
                  <div>
-                    <label htmlFor="email" className="block text-sm font-medium text-gray-700">Email</label>
-                    <Input id="email" type="email" value={email} onChange={(e) => setEmail(e.target.value)} required className="mt-1" disabled={isLoading}/>
+                    <label htmlFor="email" className="block text-sm font-medium">Email</label>
+                    <Input id="email" type="email" value={email} onChange={(e) => setEmail(e.target.value)} required className="mt-1 bg-white/20 border-white/30 placeholder:text-gray-300" disabled={isLoading}/>
                 </div>
                  <div>
-                    <label htmlFor="message" className="block text-sm font-medium text-gray-700">Message</label>
-                    <Textarea id="message" value={message} onChange={(e) => setMessage(e.target.value)} required rows={4} className="mt-1" disabled={isLoading}/>
+                    <label htmlFor="message" className="block text-sm font-medium">Message</label>
+                    <Textarea id="message" value={message} onChange={(e) => setMessage(e.target.value)} required rows={4} className="mt-1 bg-white/20 border-white/30 placeholder:text-gray-300" disabled={isLoading}/>
                 </div>
                 <div>
-                    <Button type="submit" className="w-full bg-gradient-to-r from-blue-600 to-purple-600" disabled={isLoading}>
+                    <Button type="submit" className="w-full bg-white text-blue-600 hover:bg-gray-100" disabled={isLoading}>
                       {isLoading ? (
-                        <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white"></div>
+                        <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-blue-600"></div>
                       ) : (
                         "Send Message"
                       )}
@@ -79,7 +76,8 @@ const ContactPage = () => {
             </form>
         </div>
       </div>
+    </section>
   );
 };
 
-export default ContactPage; 
+export default Contact; 
